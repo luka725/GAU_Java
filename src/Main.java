@@ -10,8 +10,10 @@ public class Main {
         Task4(10, 1.5);
         System.out.println("Sum of numbers, Task #5 -------<");
         SumOfNumbers(123);
-        System.out.println("Print last digit, Tasl #6 ------->");
+        System.out.println("Print last digit, Task #6 ------->");
         PrintLastDigit(1231234);
+        System.out.println("Print reversed number, Task #7 ------->");
+        ReverseNumber(123);
     }
 
     public static void HeronFormula(double a, double b, double c){
@@ -62,5 +64,15 @@ public class Main {
                System.out.println("Last digit of " + a + " is: " +n.charAt(i));
            }
        }
+    }
+    public static void ReverseNumber(int a){
+        String n = Integer.toString(a);
+        String rn = "";
+        int i = n.length();
+        while(i > 0){
+            i--;
+            rn += n.charAt(i);
+        }
+        System.out.println("Reversed number of " + n + " is: " + rn);
     }
 }
