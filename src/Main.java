@@ -1,5 +1,10 @@
+import java.util.Scanner;
+import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
         // #1
         int count = 0;
         for (int i = 0; i < 15; i++) count += i + (i - 1);
@@ -65,5 +70,35 @@ public class Main {
             starseachline--;
         }
 
+        // #7
+        System.out.println("Procvide any numbers and type avg for get the result:");
+        ArrayList<Integer> numbers = new ArrayList<>();
+        int basis = 1;
+        do{
+            String inp = scanner.nextLine();
+            if(inp.equals("avg")){
+                int size = numbers.size();
+                int sum = 0;
+                for (Integer number : numbers) {
+                    sum += number;
+                }
+                System.out.println("Average of numbers is: " + sum/size);
+                basis++;
+            }
+            else {
+                numbers.add(Integer.parseInt(inp));
+            }
+        }while (basis != 0);
+
+        // #8
+        int f = 10;
+        System.out.println("Fibonacci of " + f + ": " + fibonacci(f));
+    }
+    public static int fibonacci(int f) {
+        if (f <= 1) {
+            return f;
+        } else {
+            return fibonacci(f - 1) + fibonacci(f - 2);
+        }
     }
 }
