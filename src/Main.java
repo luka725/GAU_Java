@@ -73,7 +73,7 @@ public class Main {
         // #7
         System.out.println("Procvide any numbers and type avg for get the result:");
         ArrayList<Integer> numbers = new ArrayList<>();
-        int basis = 1;
+        boolean basis = true;
         do{
             String inp = scanner.nextLine();
             if(inp.equals("avg")){
@@ -83,12 +83,13 @@ public class Main {
                     sum += number;
                 }
                 System.out.println("Average of numbers is: " + sum/size);
-                basis++;
+                basis = false;
             }
             else {
                 numbers.add(Integer.parseInt(inp));
             }
-        }while (basis != 0);
+        }while (basis);
+        scanner.close();
 
         // #8
         int f = 10;
