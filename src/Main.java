@@ -14,6 +14,10 @@ public class Main {
         PrintLastDigit(1231234);
         System.out.println("Print reversed number, Task #7 ------->");
         ReverseNumber(123);
+        System.out.println("Trapezium area calculator, Task #8 ------->");
+        TrapeziumArea(3, 6, 7);
+        System.out.println("Triangle area calculator, Task #9 ------->");
+        TriangleArea(3, 6);
     }
 
     public static void HeronFormula(double a, double b, double c){
@@ -74,5 +78,11 @@ public class Main {
             rn += n.charAt(i);
         }
         System.out.println("Reversed number of " + n + " is: " + rn);
+    }
+    public static void TrapeziumArea(float a, float b, float h){
+        System.out.println("Area equals to: " + ((a + b) * h) / 2);
+    }
+    public static void TriangleArea(float a, float h){
+        System.out.println("Area of triangle equals to: " + (a * h) / 2);
     }
 }
