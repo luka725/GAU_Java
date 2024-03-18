@@ -19,6 +19,9 @@ public class BankAccount {
             Money -= amount;
         }
     }
+    public float Deposit(float amount, int month){
+        return amount * month / 100;
+    }
     public float GetMoney(){
         return Money;
     }
