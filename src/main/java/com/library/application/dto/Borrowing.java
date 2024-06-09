@@ -1,18 +1,22 @@
 package com.library.application.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Borrowing {
-    private int borrowId;
-    private int bookId;
-    private int memberId;
-    private Date borrowDate;
-    private Date returnDate;
-    public Borrowing(int borrowId, int bookId, int memberId, Date borrowDate, Date returnDate) {
-        this.borrowId = borrowId;
-        this.bookId = bookId;
-        this.memberId = memberId;
+    private int id;
+    private int bookID;
+    private int memberID;
+    private LocalDate borrowDate;
+    private LocalDate returnDate;
+
+    public Borrowing(int id, int bookID, int memberID, LocalDate borrowDate, LocalDate returnDate) {
+        this.id = id;
+        this.bookID = bookID;
+        this.memberID = memberID;
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;
     }
+
+    // Getters and setters
+    // ...
 }

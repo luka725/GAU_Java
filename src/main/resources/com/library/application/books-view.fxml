@@ -2,17 +2,19 @@
 
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.library.application.controller.BooksController">
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.library.application.controller.BooksController">
+    <TextField fx:id="searchField" promptText="Search..."/>
     <TableView fx:id="booksTable">
         <columns>
-            <TableColumn text="Book ID" fx:id="bookIdColumn"/>
-            <TableColumn text="Title" fx:id="titleColumn"/>
-            <TableColumn text="Author" fx:id="authorColumn"/>
-            <TableColumn text="Publisher" fx:id="publisherColumn"/>
-            <TableColumn text="Genre" fx:id="genreColumn"/>
-            <TableColumn text="Available" fx:id="availableColumn"/>
+            <TableColumn fx:id="bookIdColumn" text="Book ID"/>
+            <TableColumn fx:id="titleColumn" text="Title"/>
+            <TableColumn fx:id="authorColumn" text="Author"/>
+            <TableColumn fx:id="publisherColumn" text="Publisher"/>
+            <TableColumn fx:id="genreColumn" text="Genre"/>
+            <TableColumn fx:id="availableColumn" text="Available"/>
         </columns>
     </TableView>
 </VBox>

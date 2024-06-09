@@ -7,6 +7,8 @@ module com.library.application {
 
     opens com.library.application to javafx.fxml;
     opens com.library.application.controller to javafx.fxml;
+    opens com.library.application.dto to javafx.base;
+
     exports com.library.application;
     exports com.library.application.controller;
 }

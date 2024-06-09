@@ -1,63 +1,38 @@
 package com.library.application.dao;
-import com.library.application.dto.Borrowing;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.library.application.dto.BorrowingViewModel;
+import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
 public class BorrowingDAO {
-    private Connection connection;
+    private final Connection connection;
 
     public BorrowingDAO(Connection connection) {
         this.connection = connection;
     }
 
-    public void createBorrowing(int borrowID, int bookID, int memberID, String borrowDate, String returnDate) throws SQLException {
-        String sql = "INSERT INTO Borrowing (BookID, MemberID, BorrowDate, ReturnDate) VALUES (?, ?, ?, ?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, bookID);
-            statement.setInt(2, memberID);
-            statement.setString(3, borrowDate);
-            statement.setString(4, returnDate);
-            statement.executeUpdate();
-        }
-    }
+    public List<BorrowingViewModel> getAllBorrowingDetails() throws SQLException {
+        List<BorrowingViewModel> borrowingDetails = new ArrayList<>();
+        String query = "SELECT b.BorrowID AS borrowing_id, bo.title AS book_title, m.name AS member_name, m.contact, b.BorrowDate, b.ReturnDate " +
+                "FROM borrowing b " +
+                "JOIN books bo ON b.BookID = bo.BookID " +
+                "JOIN members m ON b.MemberID = m.MemberID";
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
 
-    public void updateBorrowing(int borrowID, String returnDate) throws SQLException {
-        String sql = "UPDATE Borrowing SET ReturnDate = ? WHERE BorrowID = ?";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, returnDate);
-            statement.setInt(2, borrowID);
-            statement.executeUpdate();
-        }
-    }
-
-    public void deleteBorrowing(int borrowID) throws SQLException {
-        String sql = "DELETE FROM Borrowing WHERE BorrowID = ?";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, borrowID);
-            statement.executeUpdate();
-        }
-    }
-
-    public List<Borrowing> getAllBorrowings() throws SQLException {
-        List<Borrowing> borrowings = new ArrayList<>();
-        String sql = "SELECT * FROM Borrowing";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                int borrowID = resultSet.getInt("BorrowID");
-                int bookID = resultSet.getInt("BookID");
-                int memberID = resultSet.getInt("MemberID");
+                int id = resultSet.getInt("borrowing_id");
+                String bookTitle = resultSet.getString("book_title");
+                String memberName = resultSet.getString("member_name");
+                String contact = resultSet.getString("contact");
                 Date borrowDate = resultSet.getDate("BorrowDate");
                 Date returnDate = resultSet.getDate("ReturnDate");
-                Borrowing borrowing = new Borrowing(borrowID, bookID, memberID, borrowDate, returnDate);
-                borrowings.add(borrowing);
+
+                BorrowingViewModel borrowing = new BorrowingViewModel(id, bookTitle, memberName, contact, borrowDate, returnDate);
+                borrowingDetails.add(borrowing);
             }
         }
-        return borrowings;
+        return borrowingDetails;
     }
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+
+<?import javafx.scene.layout.Region?>
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.library.application.controller.LibraryController">
+    <!-- Search Box for Books -->
+    <TextField fx:id="searchField" promptText="Search books..." />
+
+    <!-- Books TableView -->
+    <TableView fx:id="booksTable">
+        <columns>
+            <TableColumn fx:id="bookIdColumn" text="Book ID"/>
+            <TableColumn fx:id="titleColumn" text="Title"/>
+            <TableColumn fx:id="authorColumn" text="Author"/>
+            <TableColumn fx:id="publisherColumn" text="Publisher"/>
+            <TableColumn fx:id="genreColumn" text="Genre"/>
+            <TableColumn fx:id="availableColumn" text="Available"/>
+        </columns>
+    </TableView>
+
+    <!-- Spacer -->
+    <Region prefHeight="50" />
+
+    <!-- Search Box for Borrowing -->
+    <TextField fx:id="borrowingSearchField" promptText="Search borrowing records..." />
+
+    <!-- Borrowing TableView -->
+    <TableView fx:id="borrowingTable">
+        <columns>
+            <TableColumn fx:id="borrowingIdColumn" text="ID"/>
+            <TableColumn fx:id="bookTitleColumn" text="Book Title"/>
+            <TableColumn fx:id="memberNameColumn" text="Member Name"/>
+            <TableColumn fx:id="contactColumn" text="Contact"/>
+            <TableColumn fx:id="borrowDateColumn" text="Borrow Date"/>
+            <TableColumn fx:id="returnDateColumn" text="Return Date"/>
+        </columns>
+    </TableView>
+</VBox>
