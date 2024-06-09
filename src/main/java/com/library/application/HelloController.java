@@ -10,12 +10,6 @@ public class HelloController {
 
     @FXML
     protected void onHelloButtonClick() {
-        String memberName = DatabaseManager.getMemberFromDatabase(1);
-        if (memberName != null) {
-            welcomeText.setText("Welcome, " + memberName + "!");
-        }else{
-            welcomeText.setText("Welcome!");
-        }
 
     }
 }

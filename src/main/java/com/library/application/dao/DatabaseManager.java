@@ -33,44 +33,4 @@ public class DatabaseManager {
             }
         }
     }
-
-    public static String getMemberFromDatabase(int memberId) {
-        String memberName = null;
-        Connection connection = null; // Avoid reassigning the class-level connection
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-
-        try {
-            // Establish connection
-            connection = getConnection();
-
-            // SQL query to retrieve member name based on memberId
-            String sql = "SELECT Name FROM Members WHERE MemberID = ?";
-            statement = connection.prepareStatement(sql);
-            statement.setInt(1, memberId);
-
-            // Execute the query
-            resultSet = statement.executeQuery();
-
-            // Check if a row was returned
-            if (resultSet.next()) {
-                // Retrieve the member name from the result set
-                memberName = resultSet.getString("Name");
-            }
-        } catch (SQLException e) {
-            // Handle any SQL errors
-            e.printStackTrace();
-        } finally {
-            // Close the result set, statement, and connection
-            try {
-                if (resultSet != null) resultSet.close();
-                if (statement != null) statement.close();
-                // Note: Do not close the connection here; it's a singleton
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return memberName;
-    }
 }
