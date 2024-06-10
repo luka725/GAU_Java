@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextField?>
 
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Button?>
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.library.application.controller.LibraryController">
     <!-- Search Box for Books -->
     <TextField fx:id="searchField" promptText="Search books..." />
@@ -39,4 +40,8 @@
             <TableColumn fx:id="returnDateColumn" text="Return Date"/>
         </columns>
     </TableView>
+
+
+    <!-- Button to open the Add Member form -->
+    <Button  fx:id="addMemberButton" text="Add Member" onAction="#handleAddMemberButtonClick"/>
 </VBox>

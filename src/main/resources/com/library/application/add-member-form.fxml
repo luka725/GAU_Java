@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.library.application.controller.AddMemberController">
+    <TextField fx:id="nameField" promptText="Enter Name" />
+    <TextField fx:id="contactField" promptText="Enter Contact" />
+    <Button text="Add Member" onAction="#addMember" />
+</VBox>

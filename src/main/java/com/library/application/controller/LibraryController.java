@@ -1,5 +1,6 @@
 package com.library.application.controller;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,12 +13,17 @@ import com.library.application.dto.BorrowingViewModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.stage.Stage;
 
 public class LibraryController {
     @FXML
@@ -149,6 +155,26 @@ public class LibraryController {
                             borrow.getMemberName().toLowerCase().contains(query.toLowerCase()))
                     .collect(Collectors.toList());
             borrowingTable.setItems(FXCollections.observableArrayList(filteredBorrows));
+        }
+    }
+
+    @FXML
+    private Button addMemberButton;
+
+    @FXML
+    private void handleAddMemberButtonClick() {
+        try {
+            // Load the FXML file for the Add Member form
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("add-member-form.fxml"));
+            Parent addMemberRoot = fxmlLoader.load();
+
+            // Create a new stage for the Add Member form
+            Stage addMemberStage = new Stage();
+            addMemberStage.setTitle("Add Member");
+            addMemberStage.setScene(new Scene(addMemberRoot));
+            addMemberStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
